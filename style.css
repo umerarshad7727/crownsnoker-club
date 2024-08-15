@@ -1,0 +1,231 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full screen background image */
+body {
+    background-image: url('path/to/your/image.jpg'); /* Apni image ka path yahan daalain */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #f0f0f0; /* Default text color for better readability */
+    font-family: Arial, sans-serif;
+}
+
+/* Header, sections, and footer styling */
+header, section, footer {
+    background: rgba(0, 0, 0, 0.8); /* Slightly darker for better readability */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    color: #fff; /* White text color */
+    transition: background 0.3s ease; /* Smooth transition for background color */
+}
+
+header:hover, section:hover, footer:hover {
+    background: rgba(0, 0, 0, 0.9); /* Darker background on hover */
+}
+
+/* Center-aligning text and elements */
+header, section, footer {
+    text-align: center;
+}
+
+/* Custom Styling for Crownsnoker Club heading */
+header h1 {
+    font-size: 50px; /* Font size increased */
+    color: #FFD700;  /* Color changed to golden */
+}
+
+/* Animation for header image */
+@keyframes rotateScale {
+    0% {
+        transform: rotate(0deg) scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: rotate(5deg) scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(-5deg) scale(1);
+        opacity: 0.8;
+    }
+}
+
+/* Header image styling with animation */
+header img {
+    width: 150px;
+    border-radius: 50%;
+    border: 4px solid #fff; /* White border around image */
+    animation: rotateScale 6s ease-in-out infinite; /* Apply animation */
+}
+
+/* Button styling */
+.btn {
+    background-color: #4CAF50; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove border */
+    padding: 12px 24px; /* Padding */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Align buttons */
+    font-size: 18px; /* Font size */
+    margin: 10px 4px; /* Margin */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth transition for background and transform */
+}
+
+.btn:hover {
+    background-color: #45a049; /* Darker background on hover */
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.btn:active {
+    transform: scale(1); /* Reset scale on click */
+}
+
+/* Player list styling */
+.player-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.player-list li {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center align */
+    animation: fadeIn 0.5s ease; /* Fade-in animation */
+}
+
+.player-list button {
+    background-color: #f44336; /* Red background for delete button */
+    color: #fff; /* Button text color */
+    border: none; /* Remove border */
+    padding: 5px 10px; /* Padding */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 3px; /* Rounded corners */
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth transition for background and transform */
+}
+
+.player-list button:hover {
+    background-color: #c62828; /* Darker red on hover */
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.player-list button:active {
+    transform: scale(1); /* Reset scale on click */
+}
+
+/* Prizes section styling */
+.prizes {
+    margin-top: 20px;
+    animation: fadeIn 0.5s ease; /* Fade-in animation */
+}
+
+.prizes label {
+    margin-right: 10px;
+    color: #e0e0e0; /* Light gray for labels */
+}
+
+.prizes input {
+    margin-right: 10px;
+    width: 80px;
+    padding: 5px;
+    border: 1px solid #ccc; /* Light border for input fields */
+    border-radius: 3px; /* Rounded corners */
+    background-color: #fff; /* White background for input fields */
+}
+
+/* Footer styling */
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: transparent; /* Remove footer background */
+    color: #45a049; /* Light green for footer text */
+    font-size: 20px;
+    font-family: 'Arial', sans-serif; /* Footer font style */
+    position: relative; /* Position relative for animation */
+    overflow: hidden; /* Hide overflow to ensure animation is contained */
+}
+
+/* Marquee animation for copyright text */
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+footer .copyright {
+    display: inline-block; /* Required for horizontal movement */
+    white-space: nowrap; /* Prevent text from wrapping */
+    animation: marquee 10s linear infinite; /* Apply marquee animation */
+    font-size: 30px; /* Larger font size for Crownsnoker Club */
+    color: black; /* Color for better visibility and style */
+}
+
+/* Animation Definitions */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design for mobile */
+@media (max-width: 768px) {
+    .player-list li {
+        flex-direction: column;
+        align-items: center; /* Center items vertically */
+    }
+    
+    .btn {
+        font-size: 14px; /* Smaller font size on mobile */
+        padding: 8px 16px; /* Adjust padding */
+    }
+    
+    header h1 {
+        font-size: 36px; /* Adjust font size for header on mobile */
+    }
+    
+    header img {
+        width: 120px; /* Adjust image size for mobile */
+    }
+    
+    header, section, footer {
+        margin: 10px;
+        padding: 15px;
+    }
+}
+
+/* Responsive Design for larger screens */
+@media (min-width: 769px) and (max-width: 1200px) {
+    header, section, footer {
+        margin: 15px;
+        padding: 20px;
+    }
+    
+    .btn {
+        font-size: 16px; /* Adjust font size */
+        padding: 10px 20px; /* Adjust padding */
+    }
+    
+    header h1 {
+        font-size: 40px; /* Adjust font size for header on larger screens */
+    }
+    
+    header img {
+        width: 140px; /* Adjust image size for larger screens */
+    }
+}

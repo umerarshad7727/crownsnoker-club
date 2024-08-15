@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crownsnoker Club</title>
+    <link rel="stylesheet" type="text/css" href="style.css"> <!-- Ensure this is in <head> section -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    
+    <style>
+        body {
+            background-image: url('snoker photo.jfif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff; /* Default text color for better readability */
+            font-family: Arial, sans-serif;
+        }
+
+        .hidden-content {
+            display: none;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header img {
+            width: 150px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+        }
+
+        header p.owner-name {
+            margin: 10px 0 0;
+            font-size: 1.2em;
+            color: #fff;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .prizes {
+            margin-top: 20px;
+        }
+
+        .prizes label {
+            margin-right: 10px;
+        }
+
+        .prizes input {
+            margin-right: 10px;
+            width: 80px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Crownsnoker Club</h1>
+        <img src="umer.jpg" alt="Snooker Owner">
+        <p class="owner-name">Mirza Umer</p>
+    </header>
+
+    <section id="tournaments">
+        <h2>Upcoming Tournaments</h2>
+        <button class="btn" onclick="toggleDate()">Show Tournament Date</button>
+        <div id="date-info" class="hidden-content">
+            <p id="tournament-date">Tournament Date: <span id="current-date">Date not set</span></p>
+            <div>
+                <label for="new-date">Update Tournament Date:</label>
+                <input type="date" id="new-date">
+                <button class="btn" onclick="updateDate()">Update Date</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="players">
+        <h2>Players</h2>
+        <button class="btn" onclick="togglePlayers()">Show/Hide Players List</button>
+        <div id="players-list" class="hidden-content">
+            <ul id="player-list">
+                <!-- Players will be added here -->
+            </ul>
+            <div>
+                <label for="new-player">Add New Player:</label>
+                <input type="text" id="new-player" placeholder="Enter player name">
+                <button class="btn" onclick="addPlayer()">Add Player</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="prizes">
+        <h2>Tournament Prizes</h2>
+        <div class="prizes">
+            <label for="first-prize">1st Prize:</label>
+            <input type="number" id="first-prize">
+            <label for="second-prize">2nd Prize:</label>
+            <input type="number" id="second-prize">
+            <label for="third-prize">3rd Prize:</label>
+            <input type="number" id="third-prize">
+            <button class="btn" onclick="updatePrizes()">Update Prizes</button>
+        </div>
+    </section>
+
+    <footer>
+        <p class="copyright">&copy; 2024 Crownsnoker Club</p>
+    </footer>
+
+    <script>
+        function toggleDate() {
+            var dateInfo = document.getElementById('date-info');
+            if (dateInfo.classList.contains('hidden-content')) {
+                dateInfo.classList.remove('hidden-content');
+            } else {
+                dateInfo.classList.add('hidden-content');
+            }
+        }
+
+        function updateDate() {
+            var newDate = document.getElementById('new-date').value;
+            if (newDate) {
+                var formattedDate = new Date(newDate).toLocaleDateString();
+                document.getElementById('current-date').textContent = formattedDate;
+            } else {
+                alert('Please select a date.');
+            }
+        }
+
+        function togglePlayers() {
+            var playersList = document.getElementById('players-list');
+            if (playersList.classList.contains('hidden-content')) {
+                playersList.classList.remove('hidden-content');
+            } else {
+                playersList.classList.add('hidden-content');
+            }
+        }
+
+        function addPlayer() {
+            var playerName = document.getElementById('new-player').value.trim();
+            if (playerName) {
+                var playerList = document.getElementById('player-list');
+                var newPlayerItem = document.createElement('li');
+                newPlayerItem.innerHTML = `${playerName} <button onclick="removePlayer(this)">Delete</button>`;
+                playerList.appendChild(newPlayerItem);
+                document.getElementById('new-player').value = '';
+            } else {
+                alert('Please enter a player name.');
+            }
+        }
+
+        function removePlayer(button) {
+            var playerItem = button.parentElement;
+            playerItem.parentElement.removeChild(playerItem);
+        }
+
+        function updatePrizes() {
+            var firstPrize = document.getElementById('first-prize').value;
+            var secondPrize = document.getElementById('second-prize').value;
+            var thirdPrize = document.getElementById('third-prize').value;
+            console.log('Updated Prizes:', `1st Prize: ${firstPrize}`, `2nd Prize: ${secondPrize}`, `3rd Prize: ${thirdPrize}`);
+        }
+    </script>
+</body>
+</html>
